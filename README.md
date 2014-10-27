@@ -12,3 +12,14 @@ http://www.thedash.com
 ~~http://www.d3js.com~~
 
 http://www.chartjs.org/
+
+###Pavement Map Popup idea:
+
+![image](images/2014-10-27 14.26.52.jpg)
+
+###Other possible charts:
+
+![image](images/bridges.png)
+![image](images/districts.png)
+![image](images/salt.png)
+![image](images/winterfacts.png)
