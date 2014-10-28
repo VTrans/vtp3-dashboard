@@ -2,7 +2,8 @@ vtp3-dashboard
 ==============
 
 VTransparencyFeatureOnlyData.mxd - VT boundary map with non spatial tables. Used for open data portal/charts
-#Do not reorder tables. It could break existing service connections.
+#####Do not reorder tables. It could break existing service connections.
+
 
 Simple public facing performance measure reporting
 
