@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataConnections>
+    <DataConnection Name="AOTGIS_GDB_WebConnection" ProviderKey="MSSqlServer">
+      <Parameters>
+        <Parameter Name="server" Value="AOTGIS" />
+        <Parameter Name="database" Value="GDB_Web" />
+        <Parameter Name="useIntegratedSecurity" Value="False" />
+        <Parameter Name="read only" Value="1" />
+        <Parameter Name="generateConnectionHelper" Value="false" />
+      </Parameters>
+    </DataConnection>
+  </DataConnections>
+  <DataSources>
+    <DataSource ComponentName="dataSource1" Name="AOTGIS">
+      <DataProvider DataConnection="AOTGIS_GDB_WebConnection">
+        <Selection>
+          <Table Name="arcims.VPINS_PROJECT_POINTS">
+            <Columns>
+              <Column Name="ProjectName" Alias="ProjectName" />
+              <Column Name="ProjectNumber" Alias="ProjectNumber" />
+              <Column Name="ProjectDescription" Alias="ProjectDescription" />
+              <Column Name="Program" Alias="Program" />
+              <Column Name="CapitalFormat" Alias="CapitalFormat" />
+              <Column Name="ProgressIndicatorStage" Alias="ProgressIndicatorStage" />
+              <Column Name="ProgressIndicatorStatus" Alias="ProgressIndicatorStatus" />
+              <Column Name="ProgressIndicator" Alias="ProgressIndicator" />
+              <Column Name="ProgressIndicatorDescription" Alias="ProgressIndicatorDescription" />
+              <Column Name="ExpectedConstructionStart" Alias="ExpectedConstructionStart" />
+              <Column Name="ExpectedConstructionFinish" Alias="ExpectedConstructionFinish" />
+              <Column Name="PlannedConstructionYear" Alias="PlannedConstructionYear" />
+              <Column Name="ExpectedFinishDate" Alias="ExpectedFinishDate" />
+              <Column Name="ConstructionActualStart" Alias="ConstructionActualStart" />
+              <Column Name="ConstructionActualFinish" Alias="ConstructionActualFinish" />
+              <Column Name="ExpectedConstructionStartText" Alias="ExpectedConstructionStartText" />
+              <Column Name="ExpectedConstructionFinishText" Alias="ExpectedConstructionFinishText" />
+              <Column Name="ConstructionActualStartText" Alias="ConstructionActualStartText" />
+              <Column Name="ConstructionActualFinishText" Alias="ConstructionActualFinishText" />
+              <Column Name="ExpectedBidDate" Alias="ExpectedBidDate" />
+              <Column Name="ExpectedBidDateTxt" Alias="ExpectedBidDateTxt" />
+              <Column Name="PlannedBidYear" Alias="PlannedBidYear" />
+              <Column Name="County" Alias="County" />
+              <Column Name="Northing" Alias="Northing" />
+              <Column Name="Easting" Alias="Easting" />
+              <Column Name="RouteDescrp" Alias="RouteDescrp" />
+              <Column Name="BeginLRSCode" Alias="BeginLRSCode" />
+              <Column Name="EndLRSCode" Alias="EndLRSCode" />
+              <Column Name="BeginTownMileMarker" Alias="BeginTownMileMarker" />
+              <Column Name="EndTownMileMarker" Alias="EndTownMileMarker" />
+              <Column Name="LRSRoute" Alias="LRSRoute" />
+              <Column Name="BeginETEMileMarker" Alias="BeginETEMileMarker" />
+              <Column Name="EndETEMileMarker" Alias="EndETEMileMarker" />
+              <Column Name="ProjLength" Alias="ProjLength" />
+              <Column Name="ProjectManager" Alias="ProjectManager" />
+              <Column Name="ProjectManagerPhoneNumber" Alias="ProjectManagerPhoneNumber" />
+              <Column Name="ProjectManagerEmail" Alias="ProjectManagerEmail" />
+              <Column Name="ProjectManagerEmailLink" Alias="ProjectManagerEmailLink" />
+              <Column Name="ResidentEngineer" Alias="ResidentEngineer" />
+              <Column Name="Website" Alias="Website" />
+              <Column Name="LinkText" Alias="LinkText" />
+              <Column Name="MP_Ext" Alias="MP_Ext" />
+              <Column Name="LocationType" Alias="LocationType" />
+              <Column Name="RecordNumber" Alias="RecordNumber" />
+            </Columns>
+          </Table>
+          <Filters>
+            <Filter TableName="arcims.VPINS_PROJECT_POINTS" FilterString="[arcims.VPINS_PROJECT_POINTS.PlannedConstructionYear] In (2014, 2015, 2016) And [arcims.VPINS_PROJECT_POINTS.ConstructionActualStart] Is Null" />
+          </Filters>
+        </Selection>
+      </DataProvider>
+      <CalculatedFields>
+        <CalculatedField Name="Calculated Field 1" Expression="1" DataType="Integer" />
+      </CalculatedFields>
+    </DataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Project Types" ShowCaption="false" DataSource="dataSource1">
+      <DataItems>
+        <Measure DataMember="Calculated Field 1" UniqueName="DataItem1" />
+        <Dimension DataMember="Program" SortOrder="Descending" SortByMeasure="DataItem1" UniqueName="DataItem0" />
+      </DataItems>
+      <Arguments>
+        <Argument UniqueName="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple Name="Project Types">
+              <Value UniqueName="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+      <ChartLegend Visible="false" />
+    </Chart>
+    <Pie ComponentName="pieDashboardItem1" Name="Project Stage" DataSource="dataSource1">
+      <ColoringOptions MeasuresColoringMode="Hue" />
+      <DataItems>
+        <Dimension DataMember="ProgressIndicatorStage" UniqueName="DataItem0" />
+        <Measure DataMember="Calculated Field 1" Name="Project Stage" UniqueName="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument UniqueName="DataItem0" />
+      </Arguments>
+      <Values>
+        <Value UniqueName="DataItem1" />
+      </Values>
+    </Pie>
+    <Pie ComponentName="pieDashboardItem2" Name="Project Status" DataSource="dataSource1">
+      <InteractivityOptions IsDrillDownEnabled="true" />
+      <DataItems>
+        <Measure DataMember="Calculated Field 1" Name="Project Status" SummaryType="Count" UniqueName="DataItem1" />
+        <Dimension DataMember="CapitalFormat" UniqueName="DataItem2" />
+        <Dimension DataMember="ProjectNumber" UniqueName="DataItem3" />
+        <Dimension DataMember="ProgressIndicatorStatus" UniqueName="DataItem0" />
+      </DataItems>
+      <Arguments>
+        <Argument UniqueName="DataItem0" />
+        <Argument UniqueName="DataItem2" />
+        <Argument UniqueName="DataItem3" />
+      </Arguments>
+      <Values>
+        <Value UniqueName="DataItem1" />
+      </Values>
+    </Pie>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutGroup Weight="49.927641099855279" Orientation="Vertical">
+        <LayoutItem DashboardItem="pieDashboardItem1" Weight="50.058072009291521" />
+        <LayoutItem DashboardItem="pieDashboardItem2" Weight="49.941927990708479" />
+      </LayoutGroup>
+      <LayoutGroup Weight="50.072358900144721" Orientation="Vertical">
+        <LayoutItem DashboardItem="chartDashboardItem1" Weight="25.03617945007236" />
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>
