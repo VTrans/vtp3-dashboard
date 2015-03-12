@@ -77,7 +77,7 @@
   <Items>
     <Chart ComponentName="chartDashboardItem1" Name="Project Types" ShowCaption="false" DataSource="dataSource1">
       <DataItems>
-        <Measure DataMember="Calculated Field 1" UniqueName="DataItem1" />
+        <Measure DataMember="Calculated Field 1" Name="Count" UniqueName="DataItem1" />
         <Dimension DataMember="Program" SortOrder="Descending" SortByMeasure="DataItem1" UniqueName="DataItem0" />
       </DataItems>
       <Arguments>
@@ -126,14 +126,10 @@
     </Pie>
   </Items>
   <LayoutTree>
-    <LayoutGroup>
-      <LayoutGroup Weight="49.927641099855279" Orientation="Vertical">
-        <LayoutItem DashboardItem="pieDashboardItem1" Weight="50.058072009291521" />
-        <LayoutItem DashboardItem="pieDashboardItem2" Weight="49.941927990708479" />
-      </LayoutGroup>
-      <LayoutGroup Weight="50.072358900144721" Orientation="Vertical">
-        <LayoutItem DashboardItem="chartDashboardItem1" Weight="25.03617945007236" />
-      </LayoutGroup>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutItem DashboardItem="pieDashboardItem1" Weight="38.26714801444043" />
+      <LayoutItem DashboardItem="pieDashboardItem2" Weight="36.823104693140792" />
+      <LayoutItem DashboardItem="chartDashboardItem1" Weight="24.909747292418771" />
     </LayoutGroup>
   </LayoutTree>
 </Dashboard>
